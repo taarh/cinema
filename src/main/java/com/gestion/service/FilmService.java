@@ -4,11 +4,13 @@ import com.gestion.modele.Film;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface FilmService {
      Film findFilmById(Long id);
      List<Film> findAll();
-     void save(Film film);
+     Film save(Film film);
      void delete(Film film);
+     Optional<Film>findById(Long id);
 }

@@ -5,10 +5,11 @@ import com.gestion.repository.FilmRepository;
 import com.gestion.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
+import java.util.Optional;
 
 public class FilmServiceImpl implements FilmService {
 
-    FilmRepository filmRepository;
+    private FilmRepository filmRepository;
 
     @Override
     public Film findFilmById(Long id) {
@@ -21,12 +22,17 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
-    public void save(Film film) {
-        filmRepository.save(film);
+    public Film save(Film film) {
+        return filmRepository.save(film);
     }
 
     @Override
     public void delete(Film film) {
         filmRepository.delete(film);
+    }
+
+    @Override
+    public Optional<Film> findById(Long id) {
+        return filmRepository.findById(id);
     }
 }
