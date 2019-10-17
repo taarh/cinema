@@ -13,6 +13,7 @@ import java.util.List;
 
 public class FilmController {
 
+    @Autowired
     private final FilmService filmService;
 
     FilmController(FilmService service) {

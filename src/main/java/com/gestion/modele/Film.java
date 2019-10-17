@@ -3,6 +3,8 @@ package com.gestion.modele;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document(collection="Film")
 public class Film {
     @Id
@@ -10,7 +12,8 @@ public class Film {
     private String titre;
     private String duree;
     private String auteur;
-    //private Categorie categorie;
+
+    private List<Categorie> categories;
 
     public long getId() {
         return id;
@@ -43,14 +46,14 @@ public class Film {
     public void setAuteur(String auteur) {
         this.auteur = auteur;
     }
-/*
-    public Categorie getCategorie() {
-        return categorie;
+
+    public List<Categorie> getCategories() {
+        return categories;
     }
 
-    public void setCategorie(Categorie categorie) {
-        this.categorie = categorie;
+    public void setCategories(List<Categorie> categories) {
+        this.categories = categories;
     }
 
- */
+
 }

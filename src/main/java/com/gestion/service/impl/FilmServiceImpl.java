@@ -4,11 +4,14 @@ import com.gestion.modele.Film;
 import com.gestion.repository.FilmRepository;
 import com.gestion.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class FilmServiceImpl implements FilmService {
-
+    @Autowired
     private FilmRepository filmRepository;
 
     @Override
