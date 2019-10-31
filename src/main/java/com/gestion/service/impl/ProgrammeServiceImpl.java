@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProgrammeServiceImpl implements ProgrammeService {
@@ -38,5 +39,15 @@ public class ProgrammeServiceImpl implements ProgrammeService {
     public Optional<Programme> findById(Long id) {
         return programmeRepository.findById(id);
     }
+
+    @Override
+    public List<Programme> findProgrammeByCategories(String categorie) {
+        List<Programme> listeProgramme= programmeRepository.findAll();
+        return listeProgramme.stream()
+                .filter(pr -> pr.getFilm().getCategories().stream().anyMatch(s -> categorie.equalsIgnoreCase(s.getType())))
+                .collect(Collectors.toList());
+        }
+
+
 
 }

@@ -12,6 +12,8 @@ public interface ProgrammeService {
     Programme save(Programme programme);
     void delete(Programme programme);
     Optional<Programme> findById(Long id);
+    List<Programme> findProgrammeByCategories(String categorie);
+
 
 
 }

@@ -20,9 +20,7 @@ public class ProgrammeController {
     @GetMapping("/cinema/programmes")
     public List<Programme> getProgrammes() {
         return programmeService.findAll();
-
     }
-
     @PostMapping("cinema/programme")
     public void newProgramme(@RequestBody Programme programme) {
         programmeService.save(programme);
@@ -45,10 +43,13 @@ public class ProgrammeController {
                 }
         );
     }
-
     @GetMapping("cinema/programme/{id}")
     public Programme findOne(@PathVariable Long id) throws ProgrammeNotFoundException {
         return programmeService.findById(id).orElseThrow(() -> new ProgrammeNotFoundException(id));
+    }
+    @GetMapping("cinema/programme/categories/{categorie}")
+    public List<Programme>findProgrammeByCategories( @PathVariable String categorie){
+            return  programmeService.findProgrammeByCategories(categorie);
     }
 
 
