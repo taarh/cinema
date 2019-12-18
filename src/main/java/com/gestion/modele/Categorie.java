@@ -3,19 +3,21 @@ package com.gestion.modele;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.annotation.Generated;
+
 
 @Document(collection="Categorie")
 public class Categorie {
 
     @Id
-    private String id;
+    private Long id;
     private String type;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
