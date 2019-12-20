@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
         http.httpBasic().disable().csrf().disable().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.ALWAYS.STATELESS).and().authorizeRequests()
                 .antMatchers("/api/auth/login").permitAll().antMatchers("/api/auth/register").permitAll()
-                .antMatchers("/cinema/categories").hasAuthority("ADMIN").anyRequest().authenticated().and().csrf()
+                .antMatchers("/cinema/**").hasAuthority("ADMIN").anyRequest().authenticated().and().csrf()
                 .disable().exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint()).and()
                 .apply(new JwtConfigurer(jwtTokenProvider));
         http.cors();
