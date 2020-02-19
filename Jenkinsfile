@@ -11,6 +11,7 @@ pipeline {
                 sh 'mvn -B -DskipTests clean install'
             }
         }
+        agent { dockerfile true }
         stage('Test') {
             steps {
                 sh 'mvn test'
