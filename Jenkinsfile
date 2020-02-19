@@ -5,13 +5,13 @@ pipeline {
             args '-v /root/.m2:/root/.m2'
         }
     }
+    agent { dockerfile true }
     stages {
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean install'
             }
         }
-        agent { dockerfile true }
         stage('Test') {
             steps {
                 sh 'mvn test'
