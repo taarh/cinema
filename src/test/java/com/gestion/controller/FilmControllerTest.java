@@ -1,9 +1,15 @@
 package com.gestion.controller;
 
 import com.gestion.modele.Film;
+import com.gestion.repository.FilmRepository;
 import com.gestion.service.FilmService;
+import com.gestion.service.impl.FilmServiceImpl;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,15 +27,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@AutoConfigureMockMvc
+@RunWith(MockitoJUnitRunner.class)
 public class FilmControllerTest {
-    @Autowired
-    private MockMvc mockMvc;
 
-    @MockBean
-    private FilmService filmService;
+    @Mock
+    private FilmRepository filmRepository;
+    @InjectMocks
+    private FilmServiceImpl filmeService;
 
     @Test
     public void findAll() throws Exception {
@@ -40,13 +44,17 @@ public class FilmControllerTest {
         film.setDuree("2h");
 
         List<Film> films = Arrays.asList(film);
-        when(filmService.findAll()).thenReturn(films);
+        when(filmRepository.findAll()).thenReturn(films);
+
+        Assert.assertEquals(1,filmeService.findAll().size());
+
 
         // when + then
-
+/*
         this.mockMvc.perform(get("/cinema/Films"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[{'id': 1,'titre': 'fire on man','duree': '2h'}]"));
+    */
     }
 
 }
