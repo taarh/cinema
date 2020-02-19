@@ -1,7 +1,6 @@
 // Initialize a LinkedHashMap / object to share between stages
 def pipelineContext = [:]
 pipeline {
-    agent any
     agent {
         docker {
             image 'maven:3-alpine'
